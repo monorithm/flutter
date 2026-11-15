@@ -4,9 +4,9 @@
   },
   "files.readonlyInclude": {
     "lib/src/tokens/**": true,
-    "language/**": true
+    "design/**": true
   },
   "search.exclude": {
-    "language/**": true
+    "design/**": true
   }
 }
