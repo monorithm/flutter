@@ -1,0 +1,30 @@
+# If this file exists, pub does not read .gitignore. Thus this file has the lines of .gitignore that apply to the
+# package archive, and the folders that only the repository needs.
+
+# The repository only
+/language/
+/.github/
+/.vscode/
+/AGENTS.md
+
+# The lines of .gitignore
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+*.iml
+*.ipr
+*.iws
+.idea/
+/pubspec.lock
+**/doc/api/
+.dart_tool/
+.flutter-plugins-dependencies
+/build/
+/coverage/

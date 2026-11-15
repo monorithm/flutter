@@ -1,0 +1,52 @@
+# CI: the checks of monorithm_ui on each pull request and each push to main.
+#   check     the IR of the language matches its manifest, and the drift check of the generated tokens
+#   format    dart format makes no change (the check does not include the generated file)
+#   analyze   flutter analyze
+#   test      flutter test
+#   build     the package archive, with a dry run of pub publish (no upload)
+# Each action has a full commit SHA and a comment with its version.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Analyze, test, and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the repository and the language
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          submodules: true
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+
+      - name: Install the dependencies
+        run: flutter pub get
+
+      - name: Check the language and the generated tokens
+        run: dart run tool/emit.dart --check
+
+      - name: Check the format
+        run: dart format --output=none --set-exit-if-changed $(git ls-files '*.dart' | grep -v '\.g\.dart$')
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Build the package archive
+        run: flutter pub publish --dry-run

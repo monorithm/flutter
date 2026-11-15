@@ -1,0 +1,20 @@
+name: monorithm_ui
+description: "The Flutter package of the Monorithm Experience Language: the tokens and the components of the language for Flutter apps."
+version: 0.0.1
+repository: https://github.com/monorithm/flutter
+
+environment:
+  sdk: ^3.13.7
+  flutter: ">=3.47.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  crypto: ^3.0.8
+
+flutter:
