@@ -2,7 +2,7 @@
 # package archive, and the folders that only the repository needs.
 
 # The repository only
-/language/
+/design/
 /.github/
 /.vscode/
 /AGENTS.md
