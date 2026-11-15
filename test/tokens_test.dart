@@ -33,7 +33,7 @@ void main() {
       token(path)['values'] as Map<String, dynamic>;
 
   test('tokens/ir: the generated tokens have the values of the pinned IR', () {
-    expect(language, version);
+    expect(designVersion, version);
 
     // A color with no axis has the same value in each theme.
     final amber = _color(

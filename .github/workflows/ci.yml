@@ -1,5 +1,5 @@
 # CI: the checks of monorithm_ui on each pull request and each push to main.
-#   check     the IR of the language matches its manifest, and the drift check of the generated tokens
+#   check     the IR of the design matches its manifest, and the drift check of the generated tokens
 #   format    dart format makes no change (the check does not include the generated file)
 #   analyze   flutter analyze
 #   test      flutter test
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Check out the repository and the language
+      - name: Check out the repository and the design
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
@@ -36,7 +36,7 @@ jobs:
       - name: Install the dependencies
         run: flutter pub get
 
-      - name: Check the language and the generated tokens
+      - name: Check the design and the generated tokens
         run: dart run tool/emit.dart --check
 
       - name: Check the format
