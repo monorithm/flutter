@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../tokens/tokens.g.dart';
 
-/// Gives the tokens of the language to the widgets below it.
+/// Gives the tokens of the design to the widgets below it.
 ///
 /// With no [brightness], the platform brightness of the [MediaQuery] applies. With no [density], the density of the
 /// platform applies (see [platformDensity]). A [MonoTheme] in a different [MonoTheme] keeps the axis that it does not
@@ -68,7 +68,7 @@ class _MonoScope extends InheritedWidget {
   bool updateShouldNotify(_MonoScope oldWidget) => tokens != oldWidget.tokens;
 }
 
-/// The tokens of the language for a [BuildContext].
+/// The tokens of the design for a [BuildContext].
 extension MonoContext on BuildContext {
   /// The tokens for this context, for example `context.mono.color.accent`. The same as [MonoTheme.of].
   MonoTokens get mono => MonoTheme.of(this);
